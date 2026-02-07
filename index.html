@@ -1,52 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mudsip Quiz Game</title>
+<title>Mudsip Quiz</title>
+
 <style>
 body {
     font-family: Arial;
     text-align: center;
-    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+    background-image: url('https://images.unsplash.com/photo-1604079628040-94301bb21b91');
+    background-size: cover;
+    background-position: center;
+    color: white;
 }
+
+.container {
+    background: rgba(0,0,0,0.6);
+    margin: 40px auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+}
+
+h1 {
+    color: #7CFC00;
+}
+
 button {
-    padding: 10px 20px;
-    margin: 5px;
+    padding: 12px 20px;
+    margin: 6px;
     font-size: 16px;
+    border: none;
+    border-radius: 6px;
     cursor: pointer;
+    color: white;
+}
+
+/* True / False colors */
+.red { background-color: #e74c3c; }
+.yellow { background-color: #f1c40f; color: black; }
+
+/* Four option colors */
+.green { background-color: #27ae60; }
+.orange { background-color: #e67e22; }
+.brown { background-color: #8e5a2b; }
+.blue { background-color: #3498db; }
+
+#result {
+    font-size: 22px;
+    margin-top: 20px;
+    color: #FFD700;
 }
 </style>
 </head>
 
 <body>
 
+<div class="container">
+
 <h1>Mudsip Quiz</h1>
 
 <!-- Question 1: True/False -->
-<p>Q1. Clay bottles are eco-friendly.</p>
-<button onclick="checkAnswer(true)">True</button>
-<button onclick="checkAnswer(false)">False</button>
+<p><b>Q1. Clay bottles are eco-friendly.</b></p>
+<button class="red" onclick="checkAnswer(true)">True</button>
+<button class="yellow" onclick="checkAnswer(false)">False</button>
 
 <hr>
 
-<!-- Question 2: 4 options -->
-<p>Q2. Clay bottles keep water:</p>
-<button onclick="checkAnswer(false)">Hot</button>
-<button onclick="checkAnswer(true)">Naturally Cool</button>
-<button onclick="checkAnswer(false)">Dirty</button>
-<button onclick="checkAnswer(false)">Sweet</button>
+<!-- Question 2: 4 Options -->
+<p><b>Q2. Clay bottles keep water:</b></p>
+<button class="green" onclick="checkAnswer(false)">Hot</button>
+<button class="orange" onclick="checkAnswer(true)">Naturally Cool</button>
+<button class="brown" onclick="checkAnswer(false)">Dirty</button>
+<button class="blue" onclick="checkAnswer(false)">Sweet</button>
 
 <hr>
 
-<!-- Question 3: 4 options -->
-<p>Q3. Clay bottles are made from:</p>
-<button onclick="checkAnswer(false)">Plastic</button>
-<button onclick="checkAnswer(false)">Steel</button>
-<button onclick="checkAnswer(true)">Clay</button>
-<button onclick="checkAnswer(false)">Glass</button>
+<!-- Question 3: 4 Options -->
+<p><b>Q3. Clay bottles are made from:</b></p>
+<button class="green" onclick="checkAnswer(false)">Plastic</button>
+<button class="orange" onclick="checkAnswer(false)">Steel</button>
+<button class="brown" onclick="checkAnswer(true)">Clay</button>
+<button class="blue" onclick="checkAnswer(false)">Glass</button>
 
 <hr>
 
 <h2 id="result"></h2>
+
+</div>
 
 <script>
 let totalQuestions = 3;
