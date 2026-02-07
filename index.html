@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Mudsip Quiz</title>
+<title>Mudsip Green Match Game</title>
 
 <style>
 body {
@@ -9,46 +9,58 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-image: url('https://images.unsplash.com/photo-1604079628040-94301bb21b91');
+    background-image: url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6');
     background-size: cover;
     background-position: center;
     color: white;
 }
 
 .container {
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 80, 0, 0.8);
     margin: 40px auto;
-    padding: 20px;
-    width: 80%;
-    border-radius: 10px;
+    padding: 25px;
+    width: 85%;
+    border-radius: 12px;
 }
 
 h1 {
-    color: #7CFC00;
+    color: #90EE90;
+}
+
+table {
+    margin: auto;
+    border-collapse: collapse;
+    font-size: 18px;
+    width: 90%;
+}
+
+th, td {
+    border: 1px solid #90EE90;
+    padding: 10px;
+}
+
+select {
+    padding: 6px;
+    font-size: 15px;
 }
 
 button {
-    padding: 12px 20px;
-    margin: 6px;
+    margin-top: 20px;
+    padding: 12px 25px;
     font-size: 16px;
+    background-color: #2ecc71;
     border: none;
     border-radius: 6px;
-    cursor: pointer;
     color: white;
+    cursor: pointer;
 }
 
-/* True / False colors */
-.red { background-color: #e74c3c; }
-.yellow { background-color: #f1c40f; color: black; }
-
-/* Four option colors */
-.green { background-color: #27ae60; }
-.orange { background-color: #e67e22; }
-.brown { background-color: #8e5a2b; }
-.blue { background-color: #3498db; }
+button:hover {
+    background-color: #27ae60;
+}
 
 #result {
-    font-size: 22px;
+    font-size: 24px;
     margin-top: 20px;
     color: #FFD700;
 }
@@ -59,53 +71,114 @@ button {
 
 <div class="container">
 
-<h1>Mudsip Quiz</h1>
+<h1>🌿 Mudsip Match the Following 🌿</h1>
 
-<!-- Question 1: True/False -->
-<p><b>Q1. Clay bottles are eco-friendly.</b></p>
-<button class="red" onclick="checkAnswer(true)">True</button>
-<button class="yellow" onclick="checkAnswer(false)">False</button>
+<table>
+<tr>
+<th>Column A</th>
+<th>Column B (Select)</th>
+</tr>
 
-<hr>
+<tr>
+<td>1. Mud Bottle</td>
+<td>
+<select id="m1">
+<option value="">Choose</option>
+<option value="A">A - Keeps water cool naturally</option>
+<option value="B">B - Made from natural clay</option>
+<option value="C">C - Harmful to environment</option>
+<option value="D">D - Sustainable water bottle</option>
+<option value="E">E - Our product name</option>
+</select>
+</td>
+</tr>
 
-<!-- Question 2: 4 Options -->
-<p><b>Q2. Clay bottles keep water:</b></p>
-<button class="green" onclick="checkAnswer(false)">Hot</button>
-<button class="orange" onclick="checkAnswer(true)">Naturally Cool</button>
-<button class="brown" onclick="checkAnswer(false)">Dirty</button>
-<button class="blue" onclick="checkAnswer(false)">Sweet</button>
+<tr>
+<td>2. Eco-friendly</td>
+<td>
+<select id="m2">
+<option value="">Choose</option>
+<option value="A">A - Keeps water cool naturally</option>
+<option value="B">B - Made from natural clay</option>
+<option value="C">C - Harmful to environment</option>
+<option value="D">D - Sustainable water bottle</option>
+<option value="E">E - Our product name</option>
+</select>
+</td>
+</tr>
 
-<hr>
+<tr>
+<td>3. Plastic Bottle</td>
+<td>
+<select id="m3">
+<option value="">Choose</option>
+<option value="A">A - Keeps water cool naturally</option>
+<option value="B">B - Made from natural clay</option>
+<option value="C">C - Harmful to environment</option>
+<option value="D">D - Sustainable water bottle</option>
+<option value="E">E - Our product name</option>
+</select>
+</td>
+</tr>
 
-<!-- Question 3: 4 Options -->
-<p><b>Q3. Clay bottles are made from:</b></p>
-<button class="green" onclick="checkAnswer(false)">Plastic</button>
-<button class="orange" onclick="checkAnswer(false)">Steel</button>
-<button class="brown" onclick="checkAnswer(true)">Clay</button>
-<button class="blue" onclick="checkAnswer(false)">Glass</button>
+<tr>
+<td>4. Mudsip</td>
+<td>
+<select id="m4">
+<option value="">Choose</option>
+<option value="A">A - Keeps water cool naturally</option>
+<option value="B">B - Made from natural clay</option>
+<option value="C">C - Harmful to environment</option>
+<option value="D">D - Sustainable water bottle</option>
+<option value="E">E - Our product name</option>
+</select>
+</td>
+</tr>
 
-<hr>
+<tr>
+<td>5. Clay</td>
+<td>
+<select id="m5">
+<option value="">Choose</option>
+<option value="A">A - Keeps water cool naturally</option>
+<option value="B">B - Made from natural clay</option>
+<option value="C">C - Harmful to environment</option>
+<option value="D">D - Sustainable water bottle</option>
+<option value="E">E - Our product name</option>
+</select>
+</td>
+</tr>
+
+</table>
+
+<button onclick="checkMatch()">Submit</button>
 
 <h2 id="result"></h2>
 
 </div>
 
 <script>
-let totalQuestions = 3;
-let answered = 0;
-let score = 0;
+function checkMatch() {
 
-function checkAnswer(correct) {
-    answered++;
+    let score = 0;
 
-    if (correct) {
-        score++;
+    let answers = {
+        m1: "A",
+        m2: "D",
+        m3: "C",
+        m4: "E",
+        m5: "B"
+    };
+
+    for (let key in answers) {
+        let user = document.getElementById(key).value;
+        if (user === answers[key]) {
+            score++;
+        }
     }
 
-    if (answered == totalQuestions) {
-        document.getElementById("result").innerHTML =
-        "Your Score: " + score + " / " + totalQuestions;
-    }
+    document.getElementById("result").innerHTML =
+    "Your Score: " + score + " / 5 🌱";
 }
 </script>
 
