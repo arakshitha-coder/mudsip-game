@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Mudsip Quiz Game</title>
+<style>
+body {
+    font-family: Arial;
+    text-align: center;
+    background-color: #f5f5f5;
+}
+button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Mudsip Quiz</h1>
+
+<!-- Question 1: True/False -->
+<p>Q1. Clay bottles are eco-friendly.</p>
+<button onclick="checkAnswer(true)">True</button>
+<button onclick="checkAnswer(false)">False</button>
+
+<hr>
+
+<!-- Question 2: 4 options -->
+<p>Q2. Clay bottles keep water:</p>
+<button onclick="checkAnswer(false)">Hot</button>
+<button onclick="checkAnswer(true)">Naturally Cool</button>
+<button onclick="checkAnswer(false)">Dirty</button>
+<button onclick="checkAnswer(false)">Sweet</button>
+
+<hr>
+
+<!-- Question 3: 4 options -->
+<p>Q3. Clay bottles are made from:</p>
+<button onclick="checkAnswer(false)">Plastic</button>
+<button onclick="checkAnswer(false)">Steel</button>
+<button onclick="checkAnswer(true)">Clay</button>
+<button onclick="checkAnswer(false)">Glass</button>
+
+<hr>
+
+<h2 id="result"></h2>
+
+<script>
+let totalQuestions = 3;
+let answered = 0;
+let score = 0;
+
+function checkAnswer(correct) {
+    answered++;
+
+    if (correct) {
+        score++;
+    }
+
+    if (answered == totalQuestions) {
+        document.getElementById("result").innerHTML =
+        "Your Score: " + score + " / " + totalQuestions;
+    }
+}
+</script>
+
+</body>
+</html>
